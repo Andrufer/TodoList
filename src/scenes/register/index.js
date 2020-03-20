@@ -1,28 +1,25 @@
 import React, { useState } from 'react';
-import { SafeAreaView, Text, TouchableHighlight } from 'react-native';
-import {TextInput, Button} from 'react-native-paper';
+import { SafeAreaView } from 'react-native';
+import { Input, Button } from 'react-native-elements';
+
+
 const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  
   return (
     <SafeAreaView>
-      <TextInput
+      <Input
         label='Email'
-        mode='outlined'
         value={email}
         onChangeText={setEmail}
       />
-      <TextInput mode='outlined'
+      <Input
         label='Password'
         value={password}
         onChangeText={setPassword}
       />
-      <Button mode="contained" onPress={() => console.log('Pressed')}>
-        Register
-      </Button>
-      <TouchableHighlight onPress={() => navigation.navigate('Login')}>
-        <Text>Return Login</Text>
-      </TouchableHighlight>
+      <Button title='Confirm' onPress={() => navigation.navigate('Login')} />
     </SafeAreaView>
   );
 };

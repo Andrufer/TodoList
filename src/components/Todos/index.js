@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import firestore from '@react-native-firebase/firestore';
-import { FlatList } from 'react-native';
-import { Appbar, TextInput, Button } from 'react-native-paper';
+import { ScrollView } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { Input, Button } from 'react-native-elements';
+
 import Todo from './Todo';
 
 function Todos() {
@@ -40,17 +42,21 @@ function Todos() {
 
   return (
     <>
-      <Appbar>
-        <Appbar.Content title={'TODOs List'} />
-      </Appbar>
-      <FlatList
-        style={{ flex: 1 }}
-        data={todos}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <Todo {...item} />}
-      />
-      <TextInput label={'New Todo'} value={todo} onChangeText={setTodo} />
-      <Button onPress={() => addTodo()}>Add TODO</Button>
+      <ScrollView>
+        <Input
+          value={todo}
+          placeholder='New Task'
+          onChangeText={setTodo}
+          leftIcon={
+            <Icon
+              name='plus'
+              size={24}
+            />
+          }
+        />
+        <Button onPress={() => addTodo()} title='add task' />
+        {todos.map(todo => (<Todo {...todo} />))}
+      </ScrollView>
     </>
   );
 }
