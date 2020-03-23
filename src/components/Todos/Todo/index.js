@@ -2,7 +2,6 @@ import React from 'react';
 import firestore from '@react-native-firebase/firestore';
 import { ListItem } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Text } from 'react-native';
 
 function Todo({ id, task, done }) {
   async function toggleComplete() {
